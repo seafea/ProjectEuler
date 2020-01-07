@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import euler.LargestPalindromeProduct;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ class LargestPalindromProductTest {
 
 	@Test
 	void findLargestPalindromeTest() {
-		fail("Not yet implemented");
+		assertEquals(906609, LargestPalindromeProduct.findLargestPalindromeSimple());
 	}
 
 }
