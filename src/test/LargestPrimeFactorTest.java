@@ -9,12 +9,12 @@ class LargestPrimeFactorTest {
 
 	@Test
 	void findLargestPrimeFactorSimpleTest() {
-		fail("Not yet implemented");
+		assertEquals(29,LargestPrimeFactor.findLargestPrimeFactorSimple(13195));
 	}
 	
 	@Test
 	void findLargestPrimeFactorDPTest() {
-		fail("Not yet implemented");
+		assertEquals(29,LargestPrimeFactor.findLargestPrimeFactorDP(13195));
 	}
 
 }
