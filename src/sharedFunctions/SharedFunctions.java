@@ -24,4 +24,18 @@ public class SharedFunctions {
 		}
 		return sieve;
 	}
+	
+	public static boolean isaPalindrome(int num)
+	{
+		int number = num;
+		int reversedInteger = 0;
+		while (number != 0)
+		{
+			int remainder = number % 10;
+			reversedInteger *= 10;
+			reversedInteger += remainder;
+			number /= 10;
+		}
+		return (num == reversedInteger);
+	}
 }
