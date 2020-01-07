@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 class LargestPalindromProductTest {
 
 	@Test
-	void findLargestPalindromeTest() {
+	void findLargestPalindromeSimpleTest() {
 		assertEquals(906609, LargestPalindromeProduct.findLargestPalindromeSimple());
 	}
-
 }
