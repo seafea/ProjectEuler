@@ -1,5 +1,7 @@
 package sharedFunctions;
 
+import java.util.List;
+
 public class SharedFunctions {
 
 	public static boolean[] generatePrimeSieve(long maxNum)
@@ -23,6 +25,16 @@ public class SharedFunctions {
 			}
 		}
 		return sieve;
+	}
+	
+	public static List<Integer> getFirstNPrimes(int n)
+	{
+		int numPrime = 0;
+		boolean[] sieve = new boolean[1000];
+		for (int i = 2; i < sieve.length; i++)
+		{
+			
+		}
 	}
 	
 	public static boolean isaPalindrome(int num)
