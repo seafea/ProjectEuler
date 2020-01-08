@@ -20,4 +20,25 @@ public class LargestPalindromeProduct {
 		}
 		return largestPalindrome;
 	}
+	
+	public static int findLargestPalindromeTopDown()
+	{
+		int largestPalindrome = 1;
+		for (int i = 999; i >= 100; i--)
+		{
+			for (int j = 999; j >= i; j--)
+			{
+				int possibleNum = i * j;
+				if (possibleNum <= largestPalindrome)
+				{
+					break;
+				}
+				if (SharedFunctions.isaPalindrome(possibleNum))
+				{
+					largestPalindrome = possibleNum;
+				}
+			}
+		}
+		return largestPalindrome;
+	}
 }
