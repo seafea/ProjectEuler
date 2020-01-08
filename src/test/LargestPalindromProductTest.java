@@ -11,4 +11,9 @@ class LargestPalindromProductTest {
 	void findLargestPalindromeSimpleTest() {
 		assertEquals(906609, LargestPalindromeProduct.findLargestPalindromeSimple());
 	}
+	
+	@Test
+	void findLargestPalindromeTopDownTest() {
+		assertEquals(906609, LargestPalindromeProduct.findLargestPalindromeTopDown());
+	}
 }
