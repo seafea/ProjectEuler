@@ -40,7 +40,7 @@ public class LargestProductInASeries {
 		return largestProduct;
 	}
 	
-	public static long findLargestProductInSeriesBetter(int numAdjacentDigits)
+	public static long findLargestProductInSeriesNoZeros(int numAdjacentDigits)
 	{
 		long largestProduct = 0;
 		int startingPosition = 0;
@@ -48,39 +48,83 @@ public class LargestProductInASeries {
 		{
 			startingPosition = Number.substring(0, numAdjacentDigits - 1).lastIndexOf('0') + 1;
 		}
-		for (int i = 0; i < Number.length() - numAdjacentDigits + 1; i++)
+		int index = startingPosition;
+		while (index < Number.length() - numAdjacentDigits + 1)
 		{
-			if (Number.substring(i, i + numAdjacentDigits - 1).contains("0"))
+			if (Number.substring(index, index + numAdjacentDigits - 1).contains("0"))
 			{
 				// It has a zero in it.
-				// Pick up here.
+				index += numAdjacentDigits - 1;
 			}
-			long possibleProduct = 1;
-			for (int offset = 0; offset < numAdjacentDigits; offset++)
+			else
 			{
-				possibleProduct *= Character.getNumericValue(Number.charAt(i + offset));
+				long possibleProduct = 1;
+				for (int offset = 0; offset < numAdjacentDigits; offset++)
+				{
+					possibleProduct *= Character.getNumericValue(Number.charAt(index + offset));
+				}
+				largestProduct = possibleProduct > largestProduct ? 
+						possibleProduct : largestProduct;
+				index++;
 			}
-			//int possibleProduct = Character.getNumericValue(Number.charAt(i)) * Character.getNumericValue(Number.charAt(i + 1)) * 
-					//Character.getNumericValue(Number.charAt(i + 2)) * Character.getNumericValue(Number.charAt(i + 3));
-			largestProduct = possibleProduct > largestProduct ? 
-					possibleProduct : largestProduct;
 		}
 		return largestProduct;
 	}
 	
-	private static int getSmallestPossibleDigit(int numDigits, int product)
+	public static long findLargestProductInSeriesMinDigit(int numAdjacentDigits)
+	{
+		long largestProduct = 0;
+		int startingPosition = 0;
+		int smallestPossibleDigit = 1;
+		if ((Number.substring(0, numAdjacentDigits - 1)).contains("0"))
+		{
+			startingPosition = Number.substring(0, numAdjacentDigits - 1).lastIndexOf('0') + 1;
+		}
+		int index = startingPosition;
+		while (index < Number.length() - numAdjacentDigits + 1)
+		{
+			if (!isDigitHigherThanMin(Number.charAt(index + numAdjacentDigits - 1), 
+					smallestPossibleDigit))
+			{
+				index += numAdjacentDigits - 1;
+			}
+			else
+			{
+				long possibleProduct = 1;
+				for (int offset = 0; offset < numAdjacentDigits; offset++)
+				{
+					possibleProduct *= Character.getNumericValue(Number.charAt(index + offset));
+				}
+				if (possibleProduct > largestProduct)
+				{
+					largestProduct = possibleProduct;
+					smallestPossibleDigit = getSmallestPossibleDigit(numAdjacentDigits, largestProduct);
+				}
+				index++;
+			}
+		}
+		return largestProduct;
+	}
+	
+	private static boolean isDigitHigherThanMin(char digit, int smallestPossibleDigit)
+	{
+		return Character.getNumericValue(digit) >= smallestPossibleDigit;
+	}
+	
+	private static int getSmallestPossibleDigit(int numDigits, long product)
 	{
 		int smallestPossibleDigit = 1;
-		int hypotheticalProduct = 1;
-		while (hypotheticalProduct < product)
+		long hypotheticalProduct = 1;
+		while (hypotheticalProduct <= product)
 		{
-			for (int i = 1; i <= numDigits; i++)
+			for (int i = 1; i < numDigits; i++)
 			{
 				hypotheticalProduct *= 9;
 			}
-			if (hypotheticalProduct < product)
+			if (hypotheticalProduct <= product)
 			{
 				smallestPossibleDigit++;
+				hypotheticalProduct = smallestPossibleDigit;
 			}
 		}
 		return Math.max(1, smallestPossibleDigit - 1);
