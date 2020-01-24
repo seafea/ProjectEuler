@@ -23,6 +23,7 @@ public class HighlyDivisibleTriangularNumber {
 	public static int findHighlyDivisibleTriangularNumberUsingPrimes(
 			int targetNumDivisors)
 	{
+		boolean[] primeSieve = SharedFunctions.generatePrimeSieveUnderX(65500);
 		throw new UnsupportedOperationException();
 	}
 }
