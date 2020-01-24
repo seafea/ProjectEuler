@@ -5,6 +5,23 @@ import java.util.List;
 
 public class SharedFunctions {
 
+	public static int getNumberOfDivisors(int num)
+	{
+		int numDivisors = 0;
+		for (int i = 1; i <= Math.sqrt(num); i++)
+		{
+			if (num % i == 0)
+			{
+				numDivisors += 2;
+			}
+			if (i * i == num)
+			{
+				numDivisors--;
+			}
+		}
+		numDivisors++;
+		return numDivisors;
+	}
 	public static int[][] getGridOfNumbers(String grid)
 	{
 		String[] lines = grid.split(System.getProperty("line.separator"));
