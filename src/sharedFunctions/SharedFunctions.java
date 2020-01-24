@@ -5,10 +5,59 @@ import java.util.List;
 
 public class SharedFunctions {
 
+	public static int[][] getGridOfNumbers(String grid)
+	{
+		String[] lines = grid.split(System.getProperty("line.separator"));
+		int width = getWidth(lines[0]);
+		int height = lines.length;
+		int j = 0;
+		int[][] nums = new int[height][width];
+		for (String line : lines)
+		{
+			int i = 0;
+			String[] numsInput = line.split(" ");
+			for (String num : numsInput)
+			{
+				nums[j][i] = Integer.parseInt(num);
+				i++;
+			}
+			j++;
+		}
+		return nums;
+	}
+	
+	private static int getWidth(String line)
+	{
+		String[] nums = line.split(" ");
+		return nums.length;
+	}
+	
 	public static boolean[] generatePrimeSieve(long maxNum)
 	{
 		int size = (int)Math.ceil(Math.sqrt(maxNum));
 		boolean sieve[] = new boolean[size];
+		int tempNum = 0;
+		for (int i = 2; i < sieve.length; i++)
+		{
+			if (!sieve[i])
+			{
+				tempNum = i;
+				while (tempNum < sieve.length)
+				{
+					tempNum += i;
+					if (tempNum < sieve.length)
+					{
+						sieve[tempNum] = true;
+					}
+				}
+			}
+		}
+		return sieve;
+	}
+	
+	public static boolean[] generatePrimeSieveUnderX(int x)
+	{
+		boolean sieve[] = new boolean[x];
 		int tempNum = 0;
 		for (int i = 2; i < sieve.length; i++)
 		{

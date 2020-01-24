@@ -26,5 +26,4 @@ class SpecialPythagoreanTripletTest {
 	void findSpecialPythagoreanTripletBetterProblemTest() {
 		assertEquals(31875000, SpecialPythagoreanTriplet.findSpecialPythagoreanTripletBetter(1000));
 	}
-
 }
