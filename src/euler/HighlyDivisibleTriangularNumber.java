@@ -19,4 +19,10 @@ public class HighlyDivisibleTriangularNumber {
 		}
 		return currentNum;
 	}
+	
+	public static int findHighlyDivisibleTriangularNumberUsingPrimes(
+			int targetNumDivisors)
+	{
+		throw new UnsupportedOperationException();
+	}
 }
