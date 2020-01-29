@@ -9,7 +9,8 @@ class LongestCollatzSequenceTest {
 
 	@Test
 	void test() {
-		assertEquals(10, LongestCollatzSequence.findLongestChainUnderXNaive(1000000));
+		assertEquals(837799, 
+				LongestCollatzSequence.findLongestChainUnderXNaive(1000000));
 	}
 
 }
