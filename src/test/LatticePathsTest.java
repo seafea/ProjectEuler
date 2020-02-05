@@ -14,7 +14,19 @@ class LatticePathsTest {
 	
 	@Test
 	void findLatticePathsProblemTest() {
-		assertEquals(6, LatticePaths.findLatticePathsNaive(20));
+		assertEquals(137846528820L, LatticePaths.findLatticePathsNaive(20));
+	}
+	
+	@Test
+	void findLatticePathsIterativeTest()
+	{
+		assertEquals(6, LatticePaths.findLatticePathsIterative(2));
+	}
+	
+	@Test
+	void findLatticePathsIterativeProblemTest()
+	{
+		assertEquals(137846528820L, LatticePaths.findLatticePathsIterative(20));
 	}
 
 }

@@ -9,7 +9,7 @@ public class LatticePaths {
 	
 	private static long findLatticePathsHelper(int dimension, int xPos, int yPos)
 	{
-		int numWays = 0;
+		long numWays = 0;
 		if (xPos == dimension && yPos == dimension)
 		{
 			return 1L;
@@ -25,9 +25,9 @@ public class LatticePaths {
 		return numWays;
 	}
 	
-	public static long findLatticePathsBetter(int dimension)
+	public static long findLatticePathsIterative(int dimension)
 	{
-		int[][] grid = new int[dimension][dimension];
+		long[][] grid = new long[dimension + 1][dimension + 1];
 		for (int i = 0; i < grid.length; i++)
 		{
 			grid[i][grid[i].length - 1] = 1;
@@ -40,9 +40,9 @@ public class LatticePaths {
 		{
 			for (int j = grid[grid.length - 2].length - 2; j >= 0; j--)
 			{
-				
+				grid[i][j] = grid[i + 1][j] + grid[i][j + 1];
 			}
 		}
-		throw new UnsupportedOperationException();
+		return grid[0][0];
 	}
 }
