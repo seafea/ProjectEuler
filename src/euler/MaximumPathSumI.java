@@ -23,11 +23,11 @@ public class MaximumPathSumI {
 	
 	private static int findMaximumPathSumNaiveHelper(int[][] pyramid, int row, int col)
 	{
-		System.out.println("Checking " + row + ", " + col);
-		if (row == pyramid.length)
+		if (row == pyramid.length - 1)
 		{
 			return pyramid[row][col];
 		}
+		System.out.println("Looking at [" + row + "][" + col + "]");
 		int val1 = findMaximumPathSumNaiveHelper(pyramid, row + 1, col);
 		int val2 = findMaximumPathSumNaiveHelper(pyramid, row + 1, col + 1);
 		return pyramid[row][col] + Math.max(val1, val2);
