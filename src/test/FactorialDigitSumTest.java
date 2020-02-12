@@ -8,8 +8,13 @@ import org.junit.jupiter.api.Test;
 class FactorialDigitSumTest {
 
 	@Test
-	void test() {
+	void findFactorialDigitSumTest() {
 		assertEquals(27, FactorialDigitSum.findFactorialDigitSum(10));
+	}
+	
+	@Test
+	void findFactorialDigitSumProblemTest() {
+		assertEquals(648, FactorialDigitSum.findFactorialDigitSum(100));
 	}
 
 }
