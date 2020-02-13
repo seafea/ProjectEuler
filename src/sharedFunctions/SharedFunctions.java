@@ -139,4 +139,29 @@ public class SharedFunctions {
 		}
 		return (num == reversedInteger);
 	}
+	
+	public static ArrayList<String> readCSVInputFileWithQuotes(String fileName)
+	{
+		BufferedReader reader;
+		ArrayList<String> returnValues = new ArrayList<String>();
+		try
+		{
+			reader = new BufferedReader(new FileReader(fileName));
+			String line = reader.readLine();
+			while (line != null)
+			{
+				String[] pieces = line.split(",");
+				for (String s : pieces)
+				{
+					returnValues.add(s.replaceAll("\"", ""));
+				}
+				line = reader.readLine();
+			}
+		}
+		catch (Exception e)
+		{
+			System.out.println(e);
+		}
+		return returnValues;
+	}
 }
