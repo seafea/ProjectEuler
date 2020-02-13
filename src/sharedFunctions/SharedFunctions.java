@@ -164,4 +164,17 @@ public class SharedFunctions {
 		}
 		return returnValues;
 	}
+	
+	public static ArrayList<Integer> getAllProperDivisors(int num)
+	{
+		ArrayList<Integer> properDivisors = new ArrayList<Integer>();
+		for (int i = 1; i <= num / 2; i++)
+		{
+			if (num % i == 0)
+			{
+				properDivisors.add(i);
+			}
+		}
+		return properDivisors;
+	}
 }
