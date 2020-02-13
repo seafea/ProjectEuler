@@ -46,6 +46,7 @@ class MaximumPathSumII {
 				line = reader.readLine();
 				lineNum++;
 			}
+			reader.close();
 		}
 		catch (Exception e)
 		{
