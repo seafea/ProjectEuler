@@ -6,7 +6,7 @@ import sharedFunctions.SharedFunctions;
 
 public class NonAbundantSums {
 
-	public static int findNonAbundantSumALT()
+	public static int findNonAbundantSumWithSieve()
 	{
 		ArrayList<Integer> abundantNumbers = new ArrayList<Integer>();
 		int nonAbundantNumberSum = 0;
@@ -17,8 +17,26 @@ public class NonAbundantSums {
 				abundantNumbers.add(i);
 			}
 		}
-		boolean[] TwoAbundantNumbers = new boolean[28124];
-		
+		boolean[] twoAbundantNumbersSieve = new boolean[28124];
+		for (int i = 0; i < abundantNumbers.size(); i++)
+		{
+			for (int j = i; j < abundantNumbers.size(); j++)
+			{
+				int abundantNumberSum = abundantNumbers.get(i) + abundantNumbers.get(j);
+				if (abundantNumberSum < twoAbundantNumbersSieve.length)
+				{
+					twoAbundantNumbersSieve[abundantNumberSum] = true;
+				}
+			}
+		}
+		for (int i = 1; i <= 28123; i++)
+		{
+			if (!twoAbundantNumbersSieve[i])
+			{
+				nonAbundantNumberSum += i;
+			}
+		}
+		return nonAbundantNumberSum;
 	}
 	
 	public static int findNonAbundantSum()
@@ -37,11 +55,10 @@ public class NonAbundantSums {
 			boolean done = false;
 			for (int j = 0; j < abundantNumbers.size(); j++)
 			{
-				for (int k = j + 1; k < abundantNumbers.size(); k++)
+				for (int k = j; k < abundantNumbers.size(); k++)
 				{
 					if (abundantNumbers.get(j) + abundantNumbers.get(k) == i)
 					{
-						//System.out.println(i + " is the sum of " + abundantNumbers.get(j) + " and " + abundantNumbers.get(k));
 						done = true;
 						break;
 					}

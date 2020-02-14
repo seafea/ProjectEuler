@@ -8,8 +8,13 @@ import org.junit.jupiter.api.Test;
 class NonAbundantSumsTest {
 
 	@Test
-	void test() {
-		assertEquals(1, NonAbundantSums.findNonAbundantSum());
+	void findNonAbundantSumTest() {
+		assertEquals(4179871, NonAbundantSums.findNonAbundantSum());
+	}
+	
+	@Test
+	void findNonAbundantSumWithSieveTest() {
+		assertEquals(4179871, NonAbundantSums.findNonAbundantSumWithSieve());
 	}
 
 }
