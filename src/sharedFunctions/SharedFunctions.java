@@ -177,4 +177,26 @@ public class SharedFunctions {
 		}
 		return properDivisors;
 	}
+	
+	public static ArrayList<String> findPermutations(String s)
+	{
+		ArrayList permutations = new ArrayList<String>();
+		findPermutationsHelper(s, "", permutations);
+		return permutations;
+	}
+	
+	private static void findPermutationsHelper(String s, String build, ArrayList<String> permutations)
+	{
+		if (s.length() == 0)
+		{
+			permutations.add(build);
+			return;
+		}
+		for (int i = 0; i < s.length(); i++)
+		{
+			char c = s.charAt(i);
+			String newS = s.substring(0, i) + s.substring(i + 1);
+			findPermutationsHelper(newS, build + c, permutations);
+		}
+	}
 }
