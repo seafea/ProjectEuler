@@ -199,4 +199,18 @@ public class SharedFunctions {
 			findPermutationsHelper(newS, build + c, permutations);
 		}
 	}
+	
+	public static ArrayList<Integer> findFibonacciNumbersUnderN(int n)
+	{
+		ArrayList<Integer> fibonacciNumbers = new ArrayList<Integer>();
+		fibonacciNumbers.add(1);
+		fibonacciNumbers.add(1);
+		int newFibonacciNumber = fibonacciNumbers.get(0) + fibonacciNumbers.get(1);
+		while (newFibonacciNumber < n)
+		{
+			fibonacciNumbers.add(newFibonacciNumber);
+			newFibonacciNumber = fibonacciNumbers.get(fibonacciNumbers.size() - 2) + fibonacciNumbers.get(fibonacciNumbers.size() - 1);
+		}
+		return fibonacciNumbers;
+	}
 }
