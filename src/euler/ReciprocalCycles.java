@@ -1,5 +1,10 @@
 package euler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import sharedFunctions.SharedFunctions;
+
 public class ReciprocalCycles {
 
 	public static int findDenominatorWithLongestRecurringCycleUnderN(int n)
@@ -8,15 +13,31 @@ public class ReciprocalCycles {
 		{
 			return -1;
 		}
+		int highestNumRepeatingDecimal = -1;
+		int returnValue = -1;
 		for (int i = 2; i < n; i++)
 		{
-			throw new UnsupportedOperationException();
+			int repeatingDecimal = getNumberOfNonRepeatingDecimals(i);
+			if (repeatingDecimal > highestNumRepeatingDecimal)
+			{
+				highestNumRepeatingDecimal = repeatingDecimal;
+				returnValue = i;
+			}
 		}
-		throw new UnsupportedOperationException();
+		return returnValue;
 	}
 	
-	private static int getLengthOfRepeatingDecimal(int denominator)
+	public static int getNumberOfNonRepeatingDecimals(int n)
 	{
-		throw new UnsupportedOperationException();
+		HashMap<Integer, Integer> stateToIter = new HashMap<Integer, Integer>();
+		int state = 1;
+		int iter = 0;
+		while (!stateToIter.containsKey(state))
+		{
+			stateToIter.put(state, iter);
+			state = state * 10 % n;
+			iter++;
+		}
+		return iter - stateToIter.get(state);
 	}
 }
