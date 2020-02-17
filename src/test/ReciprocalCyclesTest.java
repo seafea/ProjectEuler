@@ -16,14 +16,8 @@ class ReciprocalCyclesTest {
 	
 	@Test
 	void findDenominatorWithLongestRecurringCycleUnderNProblemTest() {
-		assertEquals(6, 
+		assertEquals(983, 
 				ReciprocalCycles.
 				findDenominatorWithLongestRecurringCycleUnderN(1000));
 	}
-	
-	@Test
-	void test() {
-		assertEquals(1, ReciprocalCycles.getNumberOfNonRepeatingDecimals(997));
-	}
-
 }

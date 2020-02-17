@@ -27,17 +27,17 @@ public class ReciprocalCycles {
 		return returnValue;
 	}
 	
-	public static int getNumberOfNonRepeatingDecimals(int n)
+	public static int getNumberOfNonRepeatingDecimals(int denominator)
 	{
-		HashMap<Integer, Integer> stateToIter = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> divisionMap = new HashMap<Integer, Integer>();
 		int state = 1;
-		int iter = 0;
-		while (!stateToIter.containsKey(state))
+		int count = 0;
+		while (!divisionMap.containsKey(state))
 		{
-			stateToIter.put(state, iter);
-			state = state * 10 % n;
-			iter++;
+			divisionMap.put(state, count);
+			state = state * 10 % denominator;
+			count++;
 		}
-		return iter - stateToIter.get(state);
+		return count - divisionMap.get(state);
 	}
 }
